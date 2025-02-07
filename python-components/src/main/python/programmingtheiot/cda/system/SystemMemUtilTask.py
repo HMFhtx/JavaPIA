@@ -10,6 +10,7 @@
 import logging
 import psutil
 
+import programmingtheiot.common.ConfigConst as ConfigConst
 from programmingtheiot.cda.system.BaseSystemUtilTask import BaseSystemUtilTask
 
 class SystemMemUtilTask(BaseSystemUtilTask):
@@ -17,10 +18,9 @@ class SystemMemUtilTask(BaseSystemUtilTask):
 	Shell representation of class for student implementation.
 	
 	"""
-
 	def __init__(self):
-		pass
+		super(SystemMemUtilTask, self).__init__(name = ConfigConst.MEM_UTIL_NAME, typeID = ConfigConst.MEM_UTIL_TYPE)
 	
 	def getTelemetryValue(self) -> float:
-		pass
+		return psutil.virtual_memory().percent
 		
